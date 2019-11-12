@@ -1,0 +1,264 @@
+start:
+
+  if (Length(_health_) == 0) {
+    say Wait(2000)
+    say "You have not yet defined any health excuding."
+  }
+  else {
+    say Wait(2000)
+    say "You have already defined {{_health_}} as type of health"
+  }
+  goto select_health
+
+
+select_health:
+
+  use Button("Without alcohol") as alcohol
+  use Button("Without celery") as celery
+  use Button("Without crustacean") as crustacean
+  use Button("Without dairy") as dairy
+  use Button("Without egg") as egg
+  use Button("Without fish") as alcohol
+  use Button("Without fodmap") as fodmap
+  use Button("Without gluten") as gluten
+  use Button("Keto friendly") as keto
+  use Button("Kidney friendly") as kidney
+  use Button("Kosher") as kosher
+  use Button("Low potassium") as potassium
+  use Button("Without lupine") as lupine
+  use Button("Without mustard") as mustard
+  use Button("Low fat abs") as fat
+  use Button("No oil added") as oil
+  use Button("Low sugar") as sugar
+  use Button("Paleo") as paleo
+  use Button("Without peanut") as peanut
+  use Button("Pecatarian") as pecatarian
+  use Button("Without pork") as pork
+  use Button("Red meat free") as meat
+  use Button("Without sesame") as sesame
+  use Button("Without shellfish") as shellfish
+  use Button("Without soy") as soy
+  use Button("Sugar conscious") as sugar
+  use Button("Without tree nut") as nut
+  use Button("Vegan") as vegan
+  use Button("Vegetarian") as vegetarian
+  use Button("Without wheat") as wheat
+  use Button("I'm okay, go back to other parameters") as parameters
+  say Wait(2000)
+  say Question(
+    title = "What type of health parameters do you want to add ?",
+    buttons = [alcohol, celery, crustacean, dairy, egg, alcohol, fodmap, gluten, keto, kidney, kosher, potassium, lupine, mustard, fat, oil, sugar, paleo, peanut, pecatarian, pork, meat, sesame, shellfish, soy, sugar, nut, vegan, vegetarian, wheat, parameters]
+  )
+  hold
+  if (event match alcohol) {
+    remember Fn("append", list=_health_, elem="alcohol-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match celery) {
+    remember Fn("append", list=_health_, elem="celery-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match crustacean) {
+    remember Fn("append", list=_health_, elem="crustacean-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match dairy) {
+    remember Fn("append", list=_health_, elem="dairy-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match egg) {
+    remember Fn("append", list=_health_, elem="egg-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match alcohol) {
+    remember Fn("append", list=_health_, elem="fish-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match fodmap) {
+    remember Fn("append", list=_health_, elem="fodmap-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match gluten) {
+    remember Fn("append", list=_health_, elem="gluten-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match keto) {
+    remember Fn("append", list=_health_, elem="keto-friendly", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match kidney) {
+    remember Fn("append", list=_health_, elem="kidney-friendly", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match kosher) {
+    remember Fn("append", list=_health_, elem="kosher", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match potassium) {
+    remember Fn("append", list=_health_, elem="low-potassium", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match lupine) {
+    remember Fn("append", list=_health_, elem="lupine-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match mustard) {
+    remember Fn("append", list=_health_, elem="mustard-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match fat) {
+    remember Fn("append", list=_health_, elem="low-fat-abs", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match oil) {
+    remember Fn("append", list=_health_, elem="No-oil-added", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match sugar) {
+    remember Fn("append", list=_health_, elem="low-sugar", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match paleo) {
+    remember Fn("append", list=_health_, elem="paleo", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match peanut) {
+    remember Fn("append", list=_health_, elem="peanut-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match pecatarian) {
+    remember Fn("append", list=_health_, elem="pecatarian", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match pork) {
+    remember Fn("append", list=_health_, elem="pork-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match meat) {
+    remember Fn("append", list=_health_, elem="red-meat-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match sesame) {
+    remember Fn("append", list=_health_, elem="sesame-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match shellfish) {
+    remember Fn("append", list=_health_, elem="shellfish-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match soy) {
+    remember Fn("append", list=_health_, elem="soy-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match sugar) {
+    remember Fn("append", list=_health_, elem="sugar-conscious", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match nut) {
+    remember Fn("append", list=_health_, elem="tree-nut-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match vegan) {
+    remember Fn("append", list=_health_, elem="vegan", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match vegetarian) {
+    remember Fn("append", list=_health_, elem="vegetarian", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match wheat) {
+    remember Fn("append", list=_health_, elem="wheat-free", unique=true) as _health_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match parameters) {
+    goto flow recipe
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto select_health
+
+
+finish:
+
+  use Button("Select one more") as anotherone
+  use Button("Go back to other parameters") as parameters
+  use Button("Give me a recipe") as recipe
+  say Wait(2000)
+  say Question(
+    title = "Heath parameters are now {{_health_}}",
+    buttons= [anotherone, parameters, recipe]
+  )
+  hold
+  if (event match anotherone) {
+    goto select_health
+  }
+  else if (event match parameters) {
+    goto flow recipe
+  }
+  else if (event match recipe) {
+    goto flow get_query
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto finish
+  

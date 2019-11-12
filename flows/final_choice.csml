@@ -1,0 +1,27 @@
+start:
+	
+  use Button("Give me an other recipe with my parameters") as recipe
+  use Button("Let's go for a new recipe") as reset
+  use Button("No it's perfect") as no
+  say Wait(2000)
+  say Question(
+    title = "Do you need something else ?",
+    buttons = [recipe, reset, no]
+  )
+  hold
+  if (event match reset) {
+		goto flow reset
+  }
+  else if (event match recipe) {
+    remember (_from_ + 1) as _from_
+    remember (_to_ + 1) as _to_
+		goto flow search
+  }
+  else if (event match no) {
+    say "Good, have a nice day !"
+    say Image("https://media.giphy.com/media/3oKIPsx2VAYAgEHC12/giphy.gif")
+    goto end
+	}
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto start

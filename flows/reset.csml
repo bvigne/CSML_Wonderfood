@@ -1,0 +1,12 @@
+start:
+
+  remember 0 as _from_
+  remember 1 as _to_
+  remember [] as _diet_
+  remember [] as _cuisine_
+  remember [] as _health_
+  remember [] as _meal_
+  remember [] as _dish_
+  remember [] as _q_
+
+  goto flow recipe

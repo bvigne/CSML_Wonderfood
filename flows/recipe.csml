@@ -1,0 +1,41 @@
+start:
+
+  use Button("Cuisine Type") as cuisine
+	use Button("Diet") as diet
+	use Button("Meal Type") as meal
+	use Button("Dish Type") as dish
+	use Button("Health") as health
+	use Button("Reset all parameters") as reset
+	use Button("Give me a recipe") as recipe
+  say Wait(5000)
+  say Question(
+      title = "You can here select one of the categories to specify parameters, reset all of them, or ask me to run the recipe search.",
+      buttons = [cuisine, diet, meal, dish, health, reset, recipe]
+  )
+  hold
+  if (event match cuisine) {
+		goto flow cuisine_type
+  }
+  else if (event match diet) {
+    goto flow diet
+  }
+		else if (event match meal) {
+    goto flow meal_type
+  }
+		else if (event match dish) {
+    goto flow dish_type
+  }
+		else if (event match health) {
+    goto flow health
+	}
+  else if (event match recipe) {
+    goto flow get_query
+	}
+  else if (event match reset) {
+    say Wait(1000)
+    say Image("https://media.giphy.com/media/sChf4Eo55W8x2/giphy.gif")
+    goto flow reset
+	}
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto start

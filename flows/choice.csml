@@ -1,0 +1,39 @@
+start:
+
+	say Image(_recipe_.image)
+	goto choice
+
+
+choice:
+
+  use Button("Give me an other one") as anotherone
+  use Button("Let me change filters") as filters
+  use Button("Give me more informations about this recipe") as info
+  use Button("Give me the link") as link
+  use Button("Thank you !!") as thanks
+  say Question(
+    title = "{{_recipe_.label}}",
+    buttons= [anotherone, filters, info, link, thanks]
+  )
+  hold
+  if (event match link) {
+    say "You can find it at {{_recipe_.url}}"
+    goto flow final_choice
+  }
+  else if (event match filters) {
+    goto flow recipe
+  }
+	else if (event match info) {
+		goto flow ingredient
+	}
+  else if (event match anotherone) {
+    remember (_from_ + 1) as _from_
+    remember (_to_ + 1) as _to_
+    goto flow search
+  }
+	else if (event match thanks) {
+    goto flow final_choice
+  }
+  say Wait(1500)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto start

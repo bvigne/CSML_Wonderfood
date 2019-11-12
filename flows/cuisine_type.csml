@@ -1,0 +1,182 @@
+start:
+
+  if (Length(_cuisine_) == 0) {
+    say Wait(2000)
+    say "You have not yet defined any type of cuisine."
+  }
+  else {
+    say Wait(2000)
+    say "You have already defined {{_cuisine_}} as type of cuisine."
+  }
+  goto select_cuisine
+
+
+select_cuisine:
+
+  use Button("American") as ame
+  use Button("Asian") as asi
+  use Button("British") as bri
+  use Button("Caribbean") as car
+  use Button("Central Europe") as cent_eur
+  use Button("Chinese") as chi
+  use Button("Eastern Europe") as east_eur
+  use Button("French") as fre
+  use Button("Indian") as ind
+  use Button("Italian") as ita
+  use Button("Japanese") as jap
+  use Button("Kosher") as kos
+  use Button("Mediterranean") as med
+  use Button("Mexican") as mex
+  use Button("Middle Eastern") as mid_east
+  use Button("Nordic") as nor
+  use Button("South American") as south_ame
+  use Button("South East Asian") as south_east_asi
+  use Button("I'm okay, go back to other parameters") as parameters
+
+  say Wait(2000)
+  say Question(
+    title = "What type of cuisine do you want to add ?",
+    buttons = [ame, asi, bri, car, cent_eur, chi, east_eur, fre, ind, ita, jap, kos, med, mex, mid_east, nor, south_ame, south_east_asi, parameters]
+  )
+  hold
+  if (event match ame) {
+    remember Fn("append", list=_cuisine_, elem="American", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match asi) {
+    remember Fn("append", list=_cuisine_, elem="Asian", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match bri) {
+    remember Fn("append", list=_cuisine_, elem="British", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match car) {
+    use "Caribbean" as to_add
+    remember Fn("append", list=_cuisine_, elem=to_add, unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match cent_eur) {
+    remember Fn("append", list=_cuisine_, elem="Central Europe", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match chi) {
+    remember Fn("append", list=_cuisine_, elem="Chinese", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match east_eur) {
+    remember Fn("append", list=_cuisine_, elem="Eastern Europe", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match fre) {
+    remember Fn("append", list=_cuisine_, elem="French", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match ind) {
+    remember Fn("append", list=_cuisine_, elem="Indian", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match ita) {
+    remember Fn("append", list=_cuisine_, elem="Italian", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match jap) {
+    remember Fn("append", list=_cuisine_, elem="Japanese", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match kos) {
+    remember Fn("append", list=_cuisine_, elem="Kosher", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match med) {
+    remember Fn("append", list=_cuisine_, elem="Mediterranean", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match mex) {
+    remember Fn("append", list=_cuisine_, elem="Mexican", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match mid_east) {
+    remember Fn("append", list=_cuisine_, elem="Middle Eastern", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match nor) {
+    remember Fn("append", list=_cuisine_, elem="Nordic", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match south_ame) {
+    remember Fn("append", list=_cuisine_, elem="South American", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match south_east_asi) {
+    remember Fn("append", list=_cuisine_, elem="South East Asian", unique=true) as _cuisine_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match parameters) {
+    goto flow recipe
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto select_cuisine
+
+
+finish:
+
+  use Button("Select one more") as anotherone
+  use Button("Go back to other parameters") as parameters
+  use Button("Give me a recipe") as recipe
+  say Wait(2000)
+  say Question(
+    title = "Cuisine parameters are now {{_cuisine_}}",
+    buttons= [anotherone, parameters, recipe]
+  )
+  hold
+  if (event match anotherone) {
+    goto select_cuisine
+  }
+  else if (event match parameters) {
+    goto flow recipe
+  }
+  else if (event match recipe) {
+    goto flow get_query
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto finish
+  

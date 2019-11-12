@@ -1,0 +1,154 @@
+start:
+
+  if (Length(_dish_) == 0) {
+    say Wait(2000)
+    say "You have not yet defined the type of dish"
+  }
+  else {
+    say Wait(2000)
+    say "You have already defined {{_dish_[0]}} as type of dish"
+  }
+  goto select_dish
+
+
+select_dish:
+  
+  use Button("bread") as bread
+  use Button("Cereals") as cereals
+  use Button("Condiments and sauces") as condiments
+  use Button("Drinks") as drinks
+  use Button("Desserts") as desserts
+  use Button("Main course") as main
+  use Button("Pancake") as pancake
+  use Button("Preps") as preps
+  use Button("Preserve") as preserve
+  use Button("Salad") as salad
+  use Button("Sandwiches") as sandwiches
+  use Button("Side dish") as side
+  use Button("Soup") as soup
+  use Button("Starter") as starter
+  use Button("Sweets") as sweets
+  say Question(
+    title = "What type of dish do you want to add ?",
+    buttons= [bread, cereals, condiments, drinks, desserts, main, pancake, preps, preserve, salad, sandwiches, side, soup, starter, sweets] 
+  )
+  hold
+  if (event match bread) {
+    remember Fn("append", list=_dish_, elem="Bread", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match cereals) {
+    remember Fn("append", list=_dish_, elem="Cereals", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match condiments) {
+    remember Fn("append", list=_dish_, elem="Condiments and sauces", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match drinks) {
+    remember Fn("append", list=_dish_, elem="Drinks", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match desserts) {
+    remember Fn("append", list=_dish_, elem="Desserts", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match main) {
+    remember Fn("append", list=_dish_, elem="Main course", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match pancake) {
+    remember Fn("append", list=_dish_, elem="Pancake", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match preps) {
+    remember Fn("append", list=_dish_, elem="Preps", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match preserve) {
+    remember Fn("append", list=_dish_, elem="Preserve", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match salad) {
+    remember Fn("append", list=_dish_, elem="Salad", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match sandwiches) {
+    remember Fn("append", list=_dish_, elem="Sandwiches", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match side) {
+    remember Fn("append", list=_dish_, elem="Side dish", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match soup) {
+    remember Fn("append", list=_dish_, elem="Soup", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match starter) {
+    remember Fn("append", list=_dish_, elem="Starter", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match sweets) {
+    remember Fn("append", list=_dish_, elem="Sweets", unique=true) as _dish_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto select_dish
+
+
+finish:
+
+  use Button("Select one more") as anotherone
+  use Button("Go back to other parameters") as parameters
+  use Button("Give me a recipe") as recipe
+  say Wait(2000)
+  say Question(
+    title = "Dish parameter is now {{_dish_}}",
+    buttons= [anotherone, parameters, recipe]
+  )
+  hold
+  if (event match anotherone) {
+    goto select_dish
+  }
+  else if (event match parameters) {
+    goto flow recipe
+  }
+  else if (event match recipe) {
+    goto flow get_query
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto finish
+  

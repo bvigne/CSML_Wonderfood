@@ -1,0 +1,51 @@
+start:
+
+  use _recipe_.totalNutrients as nutrients
+	say Wait(2000)
+  say "This is the nutrient list for {{_recipe_.label}} :"
+	say Wait(2000)
+	if (nutrients.CA.label != NULL) {
+		say "{{nutrients.CA.label}} : {{nutrients.CA.quantity}} {{nutrients.CA.unit}}"
+	}
+	if (nutrients.CHOCDF.label != NULL) {
+		say "{{nutrients.CHOCDF.label}} : {{nutrients.CHOCDF.quantity}} {{nutrients.CHOCDF.unit}}"
+	}
+	if (nutrients.CHOLE.label != NULL) {
+		say "{{nutrients.CHOLE.label}} : {{nutrients.CHOLE.quantity}} {{nutrients.CHOLE.unit}}"
+	}
+	if (nutrients.FAMS.label != NULL) {
+		say "{{nutrients.FAMS.label}} : {{nutrients.FAMS.quantity}} {{nutrients.FAMS.unit}}"
+	}
+	if (nutrients.FAPU.label != NULL) {
+		say "{{nutrients.FAPU.label}} : {{nutrients.FAPU.quantity}} {{nutrients.FAPU.unit}}"
+	}
+	if (nutrients.FASAT.label != NULL) {
+		say "{{nutrients.FASAT.label}} : {{nutrients.FASAT.quantity}} {{nutrients.FASAT.unit}}"
+	}
+	if (nutrients.FAT.label != NULL) {
+		say "{{nutrients.FAT.label}} : {{nutrients.FAT.quantity}} {{nutrients.FAT.unit}}"
+	}
+	if (nutrients.FATRN.label != NULL) {
+		say "{{nutrients.FATRN.label}} : {{nutrients.FATRN.quantity}} {{nutrients.FATRN.unit}}"
+	}
+	if (nutrients.FE.label != NULL) {
+		say "{{nutrients.FE.label}} : {{nutrients.FE.quantity}} {{nutrients.FE.unit}}"
+	}
+	if (nutrients.FIBTG.label != NULL) {
+		say "{{nutrients.FIBTG.label}} : {{nutrients.FIBTG.quantity}} {{nutrients.FIBTG.unit}}"
+	}
+	if (nutrients.FOLDFE.label != NULL) {
+		say "{{nutrients.FOLDFE.label}} : {{nutrients.FOLDFE.quantity}} {{nutrients.FOLDFE.unit}}"
+	}
+	if (nutrients.K.label != NULL) {
+		say "{{nutrients.K.label}} : {{nutrients.K.quantity}} {{nutrients.K.unit}}"
+	}
+	if (nutrients.MG.label != NULL) {
+		say "{{nutrients.MG.label}} : {{nutrients.MG.quantity}} {{nutrients.MG.unit}}"
+	}
+	if (nutrients.NA.label != NULL) {
+		say "{{nutrients.NA.label}} : {{nutrients.NA.quantity}} {{nutrients.NA.unit}}"
+	}
+  say Wait(4000)
+	say "Do you need something else with this recipe ?"
+  goto flow choice

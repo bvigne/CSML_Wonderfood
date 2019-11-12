@@ -1,0 +1,33 @@
+start:
+
+  use Fn("search_recipe", q=_q_[0], from=_from_, to=_to_, cuisineType=_cuisine_, diet=_diet_, dishType=_dish_, mealType=_meal_, health=_health_) as recipes 
+  if (recipes.count == 0) { 
+    say "Sorry, I can't find any recipe."
+    goto modify
+  }
+	remember recipes.hits[0].recipe as _recipe_
+	say Wait(1500)
+	say "What do you thing about this one ?"
+	say Wait(2000)
+  goto flow choice
+
+
+modify:
+
+  use Button("Modify filters") as filters
+  use Button("Modify ingredient to search") as query
+  say Wait(1500)
+  say Question(
+    title = "Please modify filters or ingredient to search.",
+    buttons= [filters, query]
+  )
+  hold
+  if (event match filters) {
+		goto flow recipe
+  }
+  else if (event match query) {
+			goto flow get_query
+  }
+  say Wait(1000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto modify

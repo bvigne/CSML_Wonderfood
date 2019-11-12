@@ -1,0 +1,53 @@
+start:
+
+  if (Length(_q_) == 0) {
+    say Wait(2000)
+    say "Before giving you a recipe in need one last information"
+    goto get_q
+  }
+  else {
+    say "I was looking for {{_q_[0]}}"
+    goto ask_q
+  }
+
+
+ask_q:
+  use Button("Yes please") as yes
+  use Button("No, let's change") as change
+  say Wait(2000)
+  say Question(
+    title = "Should I keep it ?",
+    buttons= [yes, change]
+  )
+  hold
+  if (event match yes) {
+    say "Okay let's find a recipe with {{_q_[0]}} !"
+		goto flow search
+  }
+  else if (event match change) {
+    say "Okay let's change it !"
+    goto get_q
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto ask_q
+
+
+get_q:
+
+  use Button("Whatever !") as whatever
+  say Wait(2000)
+  say Question(
+    title = "Enter ingredient you want in your recipe or click 'whatever' button",
+    buttons= [whatever]
+  )
+  hold
+  if (event match whatever) {
+    remember [OneOf(["chicken", "beef"])] as _q_
+    goto flow search
+  }
+  else {
+    remember [event] as _q_
+    say "Okay let's find a recipe with {{_q_[0]}} !"
+    goto flow search
+  }
