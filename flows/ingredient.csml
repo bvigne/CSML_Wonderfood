@@ -1,0 +1,36 @@
+start:
+
+	say Wait(2000)
+	if (_recipe_.yield == 1) {
+		say "This recipe is for {{_recipe_.yield}} person."
+	}
+	else {
+		say "This recipe is for {{_recipe_.yield}} people."
+	}
+	say Wait(2000)
+	say "Here is the ingredient list :"
+	say Wait(2000)
+	foreach (elem, index) in _recipe_.ingredientLines {
+		say "{{elem}}"
+	}
+	goto nutriment
+
+
+nutriment:
+
+  use Button("Yes") as yes
+  use Button("No, thanks") as no
+	say Question(
+    title = "Do you want nutrient informations ?",
+    buttons= [yes, no]
+  )
+  hold
+  if (event match yes) {
+    goto flow nutrient
+	}
+  else if (event match no) {
+    goto flow choice
+  }
+  say Wait(1500)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto nutriment

@@ -1,0 +1,6 @@
+start:
+	say Wait(1000)
+  say "Hello Dear"
+  say Wait(1000)
+  say Image("https://media.giphy.com/media/9fuvOqZ8tbZOU/giphy.gif")
+  goto flow initial_choice

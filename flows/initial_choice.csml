@@ -1,0 +1,26 @@
+start:
+
+  use Button("Give me a new recipe") as recipe
+  use Button("Tell me more about you") as info
+  say Wait(2000)
+  say Question(
+    title = "What can I do for you ?",
+    buttons = [recipe, info]
+  )
+  hold
+  if (event match recipe) {
+    say Wait(4000)
+    say "To get the optimal recipe, I need you to add some parameters. Let me first initialize them !"
+    say Wait(1000)
+    say Image("https://media.giphy.com/media/5hrj42zCA1RoA/giphy.gif")
+    say Wait(4000)
+		say Wait(1500)
+		say "Okay lets do it !"
+    goto flow reset
+  }
+  else if (event match info) {
+    goto flow information
+  }
+	say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto start

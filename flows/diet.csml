@@ -1,0 +1,91 @@
+start:
+
+  if (Length(_diet_) == 0) {
+    say Wait(2000)
+    say "You have not yet defined the type of diet"
+  }
+  else {
+    say Wait(2000)
+    say "You have already defined {{_diet_[0]}} as type of diet"
+  }
+  goto select_diet
+
+
+select_diet:
+
+  use Button("Balanced") as balanced
+  use Button("High fiber") as high_fiber
+  use Button("High protein") as high_protein
+  use Button("Low carb") as low_carb
+  use Button("Low fat") as low_fat
+  use Button("Low sodium") as low_sodium
+  say Wait(2000)
+  say Question(
+    title = "What type of diet do you want me to find ?",
+    buttons = [balanced, high_fiber, high_protein, low_carb, low_fat, low_sodium]
+  )
+  hold
+  if (event match balanced) {
+    remember ["balanced"] as _diet_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match high_fiber) {
+    remember ["high-fiber"] as _diet_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match high_protein) { 
+    remember ["high-protein"] as _diet_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match low_carb) {
+    remember ["low-carb"] as _diet_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match low_fat) { 
+    remember ["low-fat"] as _diet_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match low_sodium) {
+    remember ["low-sodium"] as _diet_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto select_diet
+
+
+finish:
+  use Button("Select one more") as anotherone
+  use Button("Go back to other parameters") as parameters
+  use Button("Give me a recipe") as recipe
+  say Wait(2000)
+  say Question(
+    title = "diet parameter is now {{_diet_}}",
+    buttons= [anotherone, parameters, recipe]
+  )
+  hold
+  if (event match anotherone) {
+    goto select_diet
+  }
+  else if (event match parameters) {
+    goto flow recipe
+  }
+  else if (event match recipe) {
+    goto flow get_query
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto finish
+  

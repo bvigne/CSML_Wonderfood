@@ -1,0 +1,77 @@
+start:
+
+  if (Length(_meal_) == 0) {
+    say Wait(2000)
+    say "You have not yet defined the type of meal"
+  }
+  else {
+    say Wait(2000)
+    say "You have already defined {{_meal_[0]}} as type of meal"
+  }
+  goto select_meal
+
+
+select_meal:
+
+  use Button("Breakfast") as breakfast
+  use Button("Lunch") as lunch
+  use Button("Snack") as snack
+  use Button("Dinner") as dinner
+  say Wait(2000)
+  say Question(
+    title = "What type of meal are you looking for ?",
+    buttons = [breakfast, lunch, snack, dinner]
+  )
+  hold
+  if (event match breakfast) {
+    remember ["Breakfast"] as _meal_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match lunch) {
+    remember ["Lunch"] as _meal_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match snack) { 
+    remember ["Snack"] as _meal_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  else if (event match dinner) {
+    remember ["Dinner"] as _meal_
+    remember 0 as _from_
+    remember 1 as _to_
+    goto finish
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto select_meal
+
+finish:
+
+  use Button("Select one more") as anotherone
+  use Button("Go back to other parameters") as parameters
+  use Button("Give me a recipe") as recipe
+  say Wait(2000)
+  say Question(
+    title = "Meal parameter is now {{_meal_}}",
+    buttons= [anotherone, parameters, recipe]
+  )
+  hold
+  if (event match anotherone) {
+    goto select_meal
+  }
+  else if (event match parameters) {
+    goto flow recipe
+  }
+  else if (event match recipe) {
+    goto flow get_query
+  }
+  say Wait(2000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto finish
+  

@@ -1,0 +1,50 @@
+start:
+
+  say Wait(5000)
+  say "I'm Wonderfood, your tastiest recipes’ finder bot ! With some useful informations, I'm able to find the recipe you are looking for."
+  say Wait(4000)
+  say "Before searching, I'm gonna ask you to answer some questions, and define a few dish parameters."
+  say Wait(3000)
+  say "I can now give you some examples of parameters I need to give you the perfect recipe."
+	goto more
+
+more:
+
+  use Button("Cuisine Type") as cuisine
+  use Button("Diet") as diet
+  use Button("Meal Type") as meal
+  use Button("Dish Type") as dish
+  use Button("Health") as health
+  use Button("I got it !") as back
+  say Wait(1500)
+  say Question(
+    title = "Do you want more details about ..",
+    buttons= [cuisine, diet, meal, dish, health, back]
+  )
+  hold
+  if (event match diet) {
+    say "Balanced, High protein, Low sodium are diet categories example I'm looking for."
+		goto more
+  }
+  else if (event match cuisine) {
+    say "Italian, Japanese, Mexican are type of cuisine I'm looking for."
+		goto more
+  }
+	else if (event match meal) {
+    say "Breakfast, Lunch, Dinner are type of meal I'm looking for."
+		goto more
+  }
+	else if (event match dish) {
+    say "Cereals, Desserts, Salad are dish categories example I'm looking for."
+		goto more
+  }
+	else if (event match health) {
+    say "Without alcohol, Vegan, Vegetarian are type of health parameters I'm looking for."
+		goto more
+	}
+	else if (event match back) {
+    goto flow initial_choice
+  }
+  say Wait(1000)
+  say "Hmmm. I'm sorry, I didn't understand."
+  goto more
