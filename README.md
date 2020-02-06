@@ -4,43 +4,17 @@ This is a CSML bot created to find recipes from Edamam's Recipe Search API with 
 
 ## Installation
 
-### Flows 
-To build the entire bot, you have to create a new flow for each file in `flows` folder. A CSML flow name is equal to his flow filename.  Then copy/paste file content to the corresponding flow in the platform.
+You can upload this bot on https://studio.csml.dev.
+In order to do so, clone this repo, import the file `wonderfood.zip`.
 
-Default flow is `start.csml`.
 
-### Functions
-For each functions in `function` folder, build and install them with the following process.
-
-#### append
-
-To build the zip file, run this command:
-
-```sh
-cd functions/append/src
-zip -g ../myzip.zip index.py
-```
-
-Import is made from the CSML platform in `functions` tab.
-
-Click `add custom function` and fill the following parameters:
-
-```sh
-Upload a function : (click and select myzip.zip previously created)
-Function name : "append"
-Handler : "index.handler"
-Runtime : "python3.6"
-Arguments : "list" (list)
-            "elem" (string)
-            "unique" (bool)
-Environment variables :
-Description :
-```
-Click `Submit`, function would be created and can be used in CSML flows.
+## Functions
 
 #### search_recipe
 
-To build the zip file, run this command:
+Functions are automatically added to your newly imported chatbot, you only need to add environment variables.
+Yet you might want to edit functions.
+To upload a modified function, build the zip file, run this command:
 
 ```bash
 cd functions/search_recipe/src
@@ -50,8 +24,6 @@ zip -r9 ../../myzip.zip .
 cd ..
 zip -g ../myzip.zip index.py
 ```
-
-Import is made from the CSML platform in `functions` tab.
 
 Click `add custom function` and fill the following parameters:
 
@@ -81,7 +53,7 @@ Click `Submit`, function would be created and can be used in CSML flows.
 ## Links
 [Clevy](https://clevy.io/)
 
-[CSML-platform](https://alpha.csml.dev)
+[CSML-platform](https://studio.csml.dev)
 
 [CSML-beta-access](http://bit.ly/csml-beta)
 
